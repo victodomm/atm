@@ -1,5 +1,6 @@
+.openapi-generator-ignore
+README.md
+pom.xml
 src/main/java/com/task/openapi/api/ApiUtil.java
 src/main/java/com/task/openapi/api/StoreApi.java
-src/main/java/com/task/openapi/api/StoreApiController.java
-src/main/java/com/task/openapi/api/StoreApiDelegate.java
 src/main/java/com/task/openapi/model/Order.java

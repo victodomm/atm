@@ -1,6 +1,4 @@
 /Users/victordominguez/workspace/atm/target/generated-sources/openapi/src/main/java/com/task/openapi/model/Order.java
-/Users/victordominguez/workspace/atm/target/generated-sources/openapi/src/main/java/com/task/openapi/api/StoreApiDelegate.java
 /Users/victordominguez/workspace/atm/target/generated-sources/openapi/src/main/java/com/task/openapi/api/ApiUtil.java
-/Users/victordominguez/workspace/atm/src/main/java/com/task/atm/AtmDemoApplication.java
 /Users/victordominguez/workspace/atm/target/generated-sources/openapi/src/main/java/com/task/openapi/api/StoreApi.java
-/Users/victordominguez/workspace/atm/target/generated-sources/openapi/src/main/java/com/task/openapi/api/StoreApiController.java
+/Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/DemoCrudApplication.java
