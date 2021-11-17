@@ -2,5 +2,7 @@
 README.md
 pom.xml
 src/main/java/com/task/openapi/api/ApiUtil.java
-src/main/java/com/task/openapi/api/StoreApi.java
-src/main/java/com/task/openapi/model/Order.java
+src/main/java/com/task/openapi/api/AtmApi.java
+src/main/java/com/task/openapi/model/Account.java
+src/main/java/com/task/openapi/model/Ammmount.java
+src/main/java/com/task/openapi/model/Withdraw.java

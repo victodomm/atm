@@ -1,89 +1,154 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
-  title: Swagger Petstore
-  description: 'This is a sample server Petstore server.  You can find out more about     Swagger
-    at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For
-    this sample, you can use the api key `special-key` to test the authorization     filters.'
-  termsOfService: http://swagger.io/terms/
-  contact:
-    email: apiteam@swagger.io
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: "Trust FrameWork (TFW) is composed by the parts: MTC, LOA and DataCatalog. My Trusted Companies (MTC) is a module where the entity can configure its rules to establish an advance blacklist of entites which are not considered trusted. Credentials created by them will be refused. Level of Assurance (LoA) manages the level of assurance of the credentials and presentations according to the use case whereas Data Catalog is a corporate system that parametrizes the requested data for the clients. This module is invoked from: JWT Manager and App Integrator Dalion Middleware component."
+  title: TRUST FRAMEWORK (TFW) API
   version: 1.0.0
-externalDocs:
-  description: Find out more about Swagger
-  url: http://swagger.io
-servers:
-- url: https://petstore.swagger.io/v2
-- url: http://petstore.swagger.io/v2
 tags:
-- name: pet
-  description: Everything about your Pets
-  externalDocs:
-    description: Find out more
-    url: http://swagger.io
-- name: store
-  description: Access to Petstore orders
-- name: user
-  description: Operations about user
-  externalDocs:
-    description: Find out more about our store
-    url: http://swagger.io
+  - name: demo
+    description: Manage the balance operations 
 paths:
-  /store/order:
-    post:
+  /atm/accounts:
+    get:
       tags:
-      - store
-      summary: Place an order for a pet
-      operationId: placeOrder
-      requestBody:
-        description: order placed for purchasing the pet
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/Order'
-        required: true
+        - demo
+      summary: Get balance
+      operationId: getBalanceAccounts
+      parameters:
+        - name: id
+          in: query
+          description: Use case identifier
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pin
+          in: query
+          description: pin
+          required: true
+          schema:
+            type: integer
       responses:
-        200:
-          description: successful operation
+        "200":
+          description: accounts with balance and dispense limit
           content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        400:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+        "500":
           description: Invalid Order
           content: {}
-      x-codegen-request-body-name: body
-  
+  /atm/balance:
+    get:
+      tags:
+        - demo
+      summary: Get balance
+      operationId: getBalance
+      parameters:
+        - name: id
+          in: query
+          description: Use case identifier
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pin
+          in: query
+          description: pin
+          required: true
+          schema:
+            type: integer
+        - name: account
+          in: query
+          description: pin
+          required: true
+          schema:
+            type: string     
+      responses:
+        "200":
+          description: accounts with balance and dispense limit
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+        "500":
+          description: Invalid Order
+          content: {} 
+  /atm/createAtm:         
+    post:
+      tags:
+        - demo
+      summary: Create a group of credentials
+      operationId: createAtm
+      responses:
+        "200":
+          description: accounts with balance and dispense limit
+        "500":
+          description: Invalid Order
+          content: {}  
+  /atm/withdraw:
+    post:
+      tags:
+        - demo
+      summary: Get balance
+      operationId: withdrawMoney
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdraw'
+        description: withdraw money
+        required: true     
+      responses:
+        "200":
+          description: accounts with balance and dispense limit
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ammmount'
+        "500":
+          description: Invalid Order
+          content: {}         
+       
+          
+          
 components:
   schemas:
-    Order:
+    Account:
       type: object
       properties:
-        id:
+        accountId:
           type: integer
           format: int64
-        petId:
+        balance:
+          type: number
+          format: float
+        maxWithdrawal:
+          type: integer
+    Withdraw:
+      type: object
+      properties:
+        accountId:
           type: integer
           format: int64
-        quantity:
+        pin:
           type: integer
-          format: int32
-        shipDate:
-          type: string
-          format: date-time
-        status:
-          type: string
-          description: Order Status
+        ammmount:
+          type: integer
+          multipleOf: 5
+            
+    Ammmount:
+          type: integer
           enum:
-          - placed
-          - approved
-          - delivered
-        complete:
-          type: boolean
-          default: false
+            - 5
+            - 10
+            - 20
+            - 50      
+                
+       
 
