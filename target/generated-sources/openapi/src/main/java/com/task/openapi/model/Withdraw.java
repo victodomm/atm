@@ -12,10 +12,16 @@ import javax.validation.constraints.*;
 /**
  * Withdraw
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T09:40:08.717170+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-19T12:29:51.858733+01:00[Europe/Madrid]")
 public class Withdraw   {
+  @JsonProperty("atmId")
+  private Long atmId;
+
   @JsonProperty("accountId")
-  private Long accountId;
+  private String accountId;
+
+  @JsonProperty("id")
+  private Long id;
 
   @JsonProperty("pin")
   private Integer pin;
@@ -23,7 +29,27 @@ public class Withdraw   {
   @JsonProperty("ammmount")
   private Integer ammmount;
 
-  public Withdraw accountId(Long accountId) {
+  public Withdraw atmId(Long atmId) {
+    this.atmId = atmId;
+    return this;
+  }
+
+  /**
+   * Get atmId
+   * @return atmId
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Long getAtmId() {
+    return atmId;
+  }
+
+  public void setAtmId(Long atmId) {
+    this.atmId = atmId;
+  }
+
+  public Withdraw accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -35,12 +61,32 @@ public class Withdraw   {
   @ApiModelProperty(value = "")
 
 
-  public Long getAccountId() {
+  public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
+  }
+
+  public Withdraw id(Long id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public Withdraw pin(Integer pin) {
@@ -93,14 +139,16 @@ public class Withdraw   {
       return false;
     }
     Withdraw withdraw = (Withdraw) o;
-    return Objects.equals(this.accountId, withdraw.accountId) &&
+    return Objects.equals(this.atmId, withdraw.atmId) &&
+        Objects.equals(this.accountId, withdraw.accountId) &&
+        Objects.equals(this.id, withdraw.id) &&
         Objects.equals(this.pin, withdraw.pin) &&
         Objects.equals(this.ammmount, withdraw.ammmount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, pin, ammmount);
+    return Objects.hash(atmId, accountId, id, pin, ammmount);
   }
 
   @Override
@@ -108,7 +156,9 @@ public class Withdraw   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Withdraw {\n");
     
+    sb.append("    atmId: ").append(toIndentedString(atmId)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    pin: ").append(toIndentedString(pin)).append("\n");
     sb.append("    ammmount: ").append(toIndentedString(ammmount)).append("\n");
     sb.append("}");

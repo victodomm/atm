@@ -23,5 +23,33 @@ public class Accounts extends BaseEntity {
 	  @ManyToOne
 	    @JoinColumn(name = "user_atm_id", nullable = false)
 	    UserAtm userAtm;
+	  
+	  
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public Integer getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Integer balance) {
+		this.balance = balance;
+	}
+
+	public UserAtm getUserAtm() {
+		return userAtm;
+	}
+
+	public void setUserAtm(UserAtm userAtm) {
+		this.userAtm = userAtm;
+	}
+	  
+	  
 	
 }

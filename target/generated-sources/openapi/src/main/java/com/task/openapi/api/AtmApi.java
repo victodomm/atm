@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T09:40:08.717170+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-19T12:29:51.858733+01:00[Europe/Madrid]")
 @Validated
 @Api(value = "atm", description = "the atm API")
 public interface AtmApi {
@@ -60,19 +60,19 @@ public interface AtmApi {
      * @return accounts with balance and dispense limit (status code 200)
      *         or Invalid Order (status code 500)
      */
-    @ApiOperation(value = "Get balance", nickname = "getBalance", notes = "", response = Account.class, responseContainer = "List", tags={ "demo", })
+    @ApiOperation(value = "Get balance", nickname = "getBalance", notes = "", response = Account.class, tags={ "demo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "accounts with balance and dispense limit", response = Account.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "accounts with balance and dispense limit", response = Account.class),
         @ApiResponse(code = 500, message = "Invalid Order") })
     @GetMapping(
         value = "/atm/balance",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<Account>> getBalance(@NotNull @ApiParam(value = "Use case identifier", required = true) @Valid @RequestParam(value = "id", required = true) Long id,@NotNull @ApiParam(value = "pin", required = true) @Valid @RequestParam(value = "pin", required = true) Integer pin,@NotNull @ApiParam(value = "pin", required = true) @Valid @RequestParam(value = "account", required = true) String account) {
+    default ResponseEntity<Account> getBalance(@NotNull @ApiParam(value = "Use case identifier", required = true) @Valid @RequestParam(value = "id", required = true) Long id,@NotNull @ApiParam(value = "pin", required = true) @Valid @RequestParam(value = "pin", required = true) Integer pin,@NotNull @ApiParam(value = "pin", required = true) @Valid @RequestParam(value = "account", required = true) String account) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"accountId\" : 0, \"balance\" : 6.0274563, \"maxWithdrawal\" : 1 }";
+                    String exampleString = "{ \"accountId\" : \"accountId\", \"balance\" : 0.8008282, \"maxWithdrawal\" : 6 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -103,7 +103,7 @@ public interface AtmApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"accountId\" : 0, \"balance\" : 6.0274563, \"maxWithdrawal\" : 1 }";
+                    String exampleString = "{ \"accountId\" : \"accountId\", \"balance\" : 0.8008282, \"maxWithdrawal\" : 6 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

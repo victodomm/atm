@@ -7,6 +7,7 @@ com/example/democrud/persistence/entity/UserAtm.class
 com/example/democrud/persistence/entity/Atm.class
 com/task/openapi/model/Withdraw.class
 com/example/democrud/persistence/repository/AccountsRepo.class
+com/example/democrud/persistence/pojo/Account.class
 com/example/democrud/persistence/repository/UserAtmRepo.class
 com/example/democrud/persistence/entity/Accounts.class
 com/task/openapi/model/Account.class
@@ -14,5 +15,6 @@ com/example/democrud/service/imp/AtmServiceImpl.class
 com/task/openapi/api/AtmApi.class
 com/example/democrud/persistence/repository/AtmRepo.class
 com/example/democrud/AtmApplication.class
+com/example/democrud/mapper/AtmMapperImpl.class
 com/example/democrud/service/AtmService.class
 com/example/democrud/persistence/entity/BaseEntity.class

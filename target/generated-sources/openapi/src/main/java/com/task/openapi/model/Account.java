@@ -12,10 +12,10 @@ import javax.validation.constraints.*;
 /**
  * Account
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T09:40:08.717170+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-19T12:29:51.858733+01:00[Europe/Madrid]")
 public class Account   {
   @JsonProperty("accountId")
-  private Long accountId;
+  private String accountId;
 
   @JsonProperty("balance")
   private Float balance;
@@ -23,7 +23,7 @@ public class Account   {
   @JsonProperty("maxWithdrawal")
   private Integer maxWithdrawal;
 
-  public Account accountId(Long accountId) {
+  public Account accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -35,11 +35,11 @@ public class Account   {
   @ApiModelProperty(value = "")
 
 
-  public Long getAccountId() {
+  public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 

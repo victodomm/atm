@@ -15,4 +15,5 @@
 /Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/utils/BillNoteEnum.java
 /Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/persistence/entity/Accounts.java
 /Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/persistence/entity/Atm.java
+/Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/persistence/pojo/Account.java
 /Users/victordominguez/workspace/atm/src/main/java/com/example/democrud/service/imp/AtmServiceImpl.java

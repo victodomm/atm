@@ -30,7 +30,7 @@ public class AtmController implements AtmApi {
 	}
 
 	@Override
-	public ResponseEntity<List<Account>> getBalance(@NotNull @Valid Long id, @NotNull @Valid Integer pin,
+	public ResponseEntity<Account> getBalance(@NotNull @Valid Long id, @NotNull @Valid Integer pin,
 			@NotNull @Valid String account) {
 		try {
 			return atmService.getBalance(id, pin, account);
@@ -58,7 +58,13 @@ public class AtmController implements AtmApi {
 	@Override
 	public ResponseEntity<List<Ammmount>> withdrawMoney(@Valid Withdraw withdraw) {
 		// TODO Auto-generated method stub
-		return atmService.withdrawMoney(withdraw);
+		try {
+			return atmService.withdrawMoney(withdraw);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	

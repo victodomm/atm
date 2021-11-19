@@ -24,12 +24,60 @@ public class Atm extends BaseEntity {
 	
 	public Atm() {
 		super();
-		this.fiftyNote = BillNoteEnum.FIFTY.getValue()*10;
-		this.twentyNote = BillNoteEnum.TWENTY.getValue()*30;
-		this.tenNote = BillNoteEnum.TEN.getValue()*30;
-		this.fiveNote = BillNoteEnum.FIVE.getValue()*20;
+		this.fiftyNote = 10;
+		this.twentyNote = 30;
+		this.tenNote = 30;
+		this.fiveNote = 20;
 	}
 
+	
+	public Integer getBalanceAtm() {
+		return this.fiftyNote *BillNoteEnum.FIFTY.getValue()*10+
+		this.twentyNote* BillNoteEnum.TWENTY.getValue()*30+
+		this.tenNote * BillNoteEnum.TEN.getValue()*30+
+		this.fiveNote *BillNoteEnum.FIVE.getValue()*20;
+	}
+
+
+	public Integer getFiftyNote() {
+		return fiftyNote;
+	}
+
+
+	public void setFiftyNote(Integer fiftyNote) {
+		this.fiftyNote = fiftyNote;
+	}
+
+
+	public Integer getTwentyNote() {
+		return twentyNote;
+	}
+
+
+	public void setTwentyNote(Integer twentyNote) {
+		this.twentyNote = twentyNote;
+	}
+
+
+	public Integer getTenNote() {
+		return tenNote;
+	}
+
+
+	public void setTenNote(Integer tenNote) {
+		this.tenNote = tenNote;
+	}
+
+
+	public Integer getFiveNote() {
+		return fiveNote;
+	}
+
+
+	public void setFiveNote(Integer fiveNote) {
+		this.fiveNote = fiveNote;
+	}
+	
 	
 	
 }

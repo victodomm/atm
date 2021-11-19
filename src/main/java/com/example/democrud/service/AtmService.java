@@ -15,11 +15,11 @@ public interface AtmService {
 
 	ResponseEntity<Void> createAtm();
 
-	ResponseEntity<List<Account>> getBalance(@NotNull @Valid Long id, @NotNull @Valid Integer pin,
+	ResponseEntity<Account> getBalance(@NotNull @Valid Long id, @NotNull @Valid Integer pin,
 			@NotNull @Valid String account) throws Exception;
 
 	ResponseEntity<List<Account>> getBalanceAccounts(@NotNull @Valid Long id, @NotNull @Valid Integer pin) throws Exception;
 
-	ResponseEntity<List<Ammmount>> withdrawMoney(@Valid Withdraw withdraw);
+	ResponseEntity<List<Ammmount>> withdrawMoney(@Valid Withdraw withdraw) throws Exception;
 
 }

@@ -1,5 +1,6 @@
 package com.example.democrud.persistence.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class UserAtm extends BaseEntity {
 	private Integer pin;
 	
 	@OneToMany(mappedBy = "userAtm", cascade = CascadeType.ALL)
-    Set<Accounts> accounts;
+    List<Accounts> accounts;
 
 	public Integer getMaxWithdrawal() {
 		return maxWithdrawal;
@@ -38,11 +39,11 @@ public class UserAtm extends BaseEntity {
 		this.pin = pin;
 	}
 
-	public Set<Accounts> getAccounts() {
+	public List<Accounts> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(Set<Accounts> accounts) {
+	public void setAccounts(List<Accounts> accounts) {
 		this.accounts = accounts;
 	}
 	

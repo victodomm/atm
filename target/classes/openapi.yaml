@@ -71,8 +71,6 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
                   $ref: '#/components/schemas/Account'
         "500":
           description: Invalid Order
@@ -123,8 +121,7 @@ components:
       type: object
       properties:
         accountId:
-          type: integer
-          format: int64
+          type: string
         balance:
           type: number
           format: float
@@ -133,9 +130,14 @@ components:
     Withdraw:
       type: object
       properties:
-        accountId:
+        atmId:
           type: integer
           format: int64
+        accountId:
+          type: string
+        id:
+          type: integer
+          format: int64  
         pin:
           type: integer
         ammmount:
