@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "USER_ATM")
 public class UserAtm extends BaseEntity {
 
-	@Column(name = "max_withdrawal", nullable = false)
+	@Column(name = "max_withdrawal", nullable = true)
 	private Integer maxWithdrawal;
 	
 	

@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-19T12:29:51.858733+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-22T09:51:45.039893+01:00[Europe/Madrid]")
 @Validated
 @Api(value = "atm", description = "the atm API")
 public interface AtmApi {

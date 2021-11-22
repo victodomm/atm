@@ -10,16 +10,16 @@ import com.example.democrud.utils.BillNoteEnum;
 @Table(name = "ATM")
 public class Atm extends BaseEntity {
 
-	@Column(name = "fifty_note", nullable = false, unique = true)
+	@Column(name = "fifty_note", nullable = false)
 	private Integer fiftyNote;
 	
-	@Column(name = "twenty_note", nullable = false, unique = true)
+	@Column(name = "twenty_note", nullable = false)
 	private Integer twentyNote;
 	
-	@Column(name = "ten_note", nullable = false, unique = true)
+	@Column(name = "ten_note", nullable = false)
 	private Integer tenNote;
 	
-	@Column(name = "five_note", nullable = false, unique = true)
+	@Column(name = "five_note", nullable = false)
 	private Integer fiveNote;
 	
 	public Atm() {
@@ -32,10 +32,10 @@ public class Atm extends BaseEntity {
 
 	
 	public Integer getBalanceAtm() {
-		return this.fiftyNote *BillNoteEnum.FIFTY.getValue()*10+
-		this.twentyNote* BillNoteEnum.TWENTY.getValue()*30+
-		this.tenNote * BillNoteEnum.TEN.getValue()*30+
-		this.fiveNote *BillNoteEnum.FIVE.getValue()*20;
+		return this.fiftyNote *BillNoteEnum.FIFTY.getValue()+
+		this.twentyNote* BillNoteEnum.TWENTY.getValue()+
+		this.tenNote * BillNoteEnum.TEN.getValue()+
+		this.fiveNote *BillNoteEnum.FIVE.getValue();
 	}
 
 

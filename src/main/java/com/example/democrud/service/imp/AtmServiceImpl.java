@@ -1,7 +1,10 @@
 package com.example.democrud.service.imp;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -50,15 +53,16 @@ public class AtmServiceImpl implements AtmService{
 		
 		UserAtm userAtm =  findUser(id);
 		if(!pin(userAtm,pin)) throw new Exception();
-		return new ResponseEntity<Account>(atmMapper.EntityAccountToEntityModelDto(userAtm.getAccounts().stream().filter(item -> 
-		!account.equals(item.getAccount())).findAny().orElseThrow(Exception::new)), HttpStatus.OK);
+		Accounts aux = userAtm.getAccounts().stream().filter(item -> 
+		account.equals(item.getAccount())).findAny().orElseThrow(Exception::new);
+		return new ResponseEntity<Account>(atmMapper.EntityAccountToEntityModelDto(aux), HttpStatus.OK);
 		
 	}
 
 	@Override
 	public ResponseEntity<List<Account>> getBalanceAccounts(@NotNull @Valid Long id, @NotNull @Valid Integer pin) throws Exception{
 		UserAtm userAtm =  findUser(id);
-		if(pin(userAtm,pin)) throw new Exception();
+		if(!pin(userAtm,pin)) throw new Exception();
 		return new ResponseEntity<List<Account>>(atmMapper.EntityAccountListToEntityModelListDto(userAtm.getAccounts()), 
 				HttpStatus.OK);
 	}
@@ -72,7 +76,7 @@ public class AtmServiceImpl implements AtmService{
 		UserAtm userAtm =  findUser(withdraw.getId());
 		if(!pin( userAtm,withdraw.getPin()))throw new Exception();
 		Accounts userAccount = userAtm.getAccounts().stream().filter(item -> 
-		!withdraw.getAccountId().equals(item.getAccount())).findAny().orElseThrow(Exception::new);
+		withdraw.getAccountId().equals(item.getAccount())).findAny().orElseThrow(Exception::new);
 		if(userAccount.getBalance()<withdraw.getAmmmount()|| withdraw.getAmmmount()>atm.getBalanceAtm())throw new Exception();
 		int ammount= withdraw.getAmmmount();
 		while (ammount>0) {
@@ -84,27 +88,30 @@ public class AtmServiceImpl implements AtmService{
 				
 			}else if(ammount>=BillNoteEnum.TWENTY.value && atm.getTwentyNote()>0) {
 				ammount-=BillNoteEnum.TWENTY.value;
-				atm.setFiftyNote(atm.getTwentyNote()-1);
+				atm.setTwentyNote(atm.getTwentyNote()-1);
 				ret.add(Ammmount.NUMBER_20);
 			}else if(ammount>=BillNoteEnum.TEN.value && atm.getTenNote()>0) {
 				ammount-=BillNoteEnum.TEN.value;
-				atm.setFiftyNote(atm.getTenNote()-1);
+				atm.setTenNote(atm.getTenNote()-1);
 				ret.add(Ammmount.NUMBER_10);
 			}else if(ammount>=BillNoteEnum.FIVE.value && atm.getFiveNote()>0) {
 				ammount-=BillNoteEnum.FIVE.value;
-				atm.setFiftyNote(atm.getFiveNote()-1);
+				atm.setFiveNote(atm.getFiveNote()-1);
 				ret.add(Ammmount.NUMBER_5);
 			}
 		}
+		atmRepo.save(atm);
 		return new ResponseEntity<List<Ammmount>>(ret, HttpStatus.OK);
 		
 	}
 	
 	private boolean pin(UserAtm userAtm,Integer pin) {
+
 		return userAtm.getPin().equals(pin);
 	}
 	
 	private UserAtm findUser(Long id) throws Exception{
+		
 		return userAtmRepo.findById(id).orElseThrow(Exception::new);
 			
 	}

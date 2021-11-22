@@ -18,7 +18,7 @@ services:
     ports:
       - 5424:5432
     volumes:
-      - ./sql:/sql  
+      - "./sql/initial.sql:/docker-entrypoint-initdb.d/1.sql"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

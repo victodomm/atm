@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-11-19T12:29:54+0100"
+    date = "2021-11-22T09:34:38+0100"
 )
 @Component
 public class AtmMapperImpl implements AtmMapper {
